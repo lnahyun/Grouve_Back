@@ -1,8 +1,10 @@
 # Grouve_Back
 ### 1.회원가입
 이메일인증, 이름, 아이디, 비밀번호, 비밀번호 확인
+
 이메일 인증 = SMTP 서비스 설정(네이버나 구글에서 제공하는거 이용)
-[](https://green-bin.tistory.com/83)
+
+(https://green-bin.tistory.com/83)
 
 ### 2.로그인
 ### 3.모임현황
