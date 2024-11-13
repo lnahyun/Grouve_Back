@@ -1,5 +1,0 @@
-spring:
-  application:
-    name: webProject
-server:
-  port: 8081
