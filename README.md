@@ -16,7 +16,9 @@
 - Deploy: 미정 <br>
 
 ## 주요 기능
-- 회원가입
-- 로그인
+- 회원가입<br>
+  : email(고유 식별자), name, password, passwordCheck
+- 로그인<br>
+  : email(고유 식별자), name, password
 - 모임 개설
 - 모임 현황
