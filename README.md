@@ -4,7 +4,7 @@
 
 
 [Frontend Repository](https://github.com/AGORA-WEB-GROUVE/Grouve_Front.git) <br>
-[Figma Link](https://www.figma.com/design/mqpFtsZ2AscrOxHjKSSS59/%EC%95%84%EA%B3%A0%EB%9D%BC-web-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8---1%EC%B0%A8?node-id=0-1&node-type=canvas&t=LUsEeGrbRg30eTm9-0)
+[Figma Link](https://www.figma.com/design/vxUqWYAGdnvswajPDx2vaz/%EC%95%84%EA%B3%A0%EB%9D%BC-%EC%9B%B9-2%EC%B0%A8-%EC%A0%95%EB%A6%AC?node-id=0-1&t=013ajJSpvhyGBLDs-1)
 
 ## Stack
 **Backend**
