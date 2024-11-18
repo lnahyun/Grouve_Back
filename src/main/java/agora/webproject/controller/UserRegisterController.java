@@ -46,7 +46,7 @@ public class UserRegisterController {
         }
 
         // 사용자 이름 중복 검사
-        if (userRegisterService.isUsernameExist(userDTO.getName())) {
+        if (userRegisterService.isUsernameExist(userDTO.getUsername())) {
             model.addAttribute("message", "이미 존재하는 사용자 이름입니다.");
             return "Register";
         }
@@ -54,6 +54,11 @@ public class UserRegisterController {
         // 비밀번호 길이 검사
         if (userDTO.getPassword().length() < 4 || userDTO.getPassword().length() > 13) {
             model.addAttribute("message", "비밀번호는 4~13 글자 사이여야 합니다.");
+            return "Register";
+        }
+
+        if (!userDTO.getPassword().equals(userDTO.getConfirmPassword())) {
+            model.addAttribute("message", "비밀번호와 비밀번호 확인이 일치하지 않습니다.");
             return "Register";
         }
 

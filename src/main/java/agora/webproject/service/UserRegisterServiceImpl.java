@@ -32,7 +32,7 @@ public class UserRegisterServiceImpl implements UserRegisterService {
         User user = User.builder()
                 .email(userdto.getEmail())
                 .password(encodedPassword) // 암호화된 비밀번호 사용
-                .username(userdto.getName())
+                .username(userdto.getUsername())
                 .build();
 
         // 저장 및 반환
