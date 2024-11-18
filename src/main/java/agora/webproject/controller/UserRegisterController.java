@@ -1,17 +1,17 @@
 package agora.webproject.controller;
 
-import agora.webproject.domain.User;
 import agora.webproject.dto.UserDTO;
 import agora.webproject.service.UserRegisterService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/api/users")
@@ -58,8 +58,9 @@ public class UserRegisterController {
         }
 
         // 사용자 저장
-        User savedUser = userRegisterService.saveDTO(userDTO);
+        userRegisterService.saveDTO(userDTO);
         model.addAttribute("message", "회원가입이 성공적으로 완료되었습니다.");
         return "Register";
+
     }
 }
