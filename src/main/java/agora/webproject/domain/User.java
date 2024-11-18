@@ -1,4 +1,4 @@
-package agora.webproject.Domain;
+package agora.webproject.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,13 +11,13 @@ import lombok.*;
 @Builder //Builder 패턴으로 객체 생성
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-
-    @Column(name = "id")
-
-    private String username;
-    private String password;
+    //email은 중복 금지
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
+    private String username;
+
+    @Column(nullable = false)
+    private String password;
 }

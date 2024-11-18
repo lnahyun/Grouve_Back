@@ -1,30 +1,45 @@
 package agora.webproject.service;
-
 import agora.webproject.domain.User;
 import agora.webproject.dto.UserDTO;
 import agora.webproject.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 @Slf4j
-public class UserRepositoryServiceImpl implements {
+public class UserRegisterServiceImpl implements UserRegisterService{
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
     @Override
     public User saveEntity(User user) {
-        return UserRepository.save(User);
+        return userRepository.save(user);
     }
 
     @Override
     public User saveDTO(UserDTO userdto) {
+        String encodedPassword = passwordEncoder.encode(userdto.getPassword());
         User user = User.builder()
                 .email(userdto.getEmail())
-                .passwd(userdto.getPasswd())
+                .password(passwordEncoder.encode(userdto.getPassword()))
+                .username(userdto.getName())
                 .build();
         return saveEntity(user);
+    }
+
+    @Override
+    public boolean isEmailExist(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public boolean isUsernameExist(String username) {
+        return userRepository.existsByUsername(username);
     }
 }
