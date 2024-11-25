@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모임 목록</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<h1>모임 목록</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>조장 Email</th>
+        <th>그룹명</th>
+        <th>인원</th>
+        <th>작성일</th>
+        <th>카테고리</th>
+        <th>현재 모임 상태</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="meeting : ${meetings}">
+        <td th:text="${meeting.id}"></td>
+        <td th:text="${meeting.leader}"></td>
+        <td th:text="${meeting.meetingName}"></td>
+        <td th:text="${meeting.participants}"></td>
+        <td th:text="${meeting.creationDate}"></td>
+        <td th:text="${meeting.category}"></td>
+        <td th:text="${meeting.status}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/api/meetings/create">모임 추가하기</a> <!-- 모임 추가 페이지로 이동하는 링크 -->
+</body>
+</html>
