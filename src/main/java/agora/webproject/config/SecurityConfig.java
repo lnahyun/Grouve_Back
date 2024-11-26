@@ -17,18 +17,24 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        //.requestMatchers("/register", "/api/users/register").permitAll()
+                        .requestMatchers("/api/user/login", "/api/user/register", "/").permitAll()
+                        .requestMatchers("/api/meetings/create", "/api/meetings/list").authenticated()
                         .anyRequest().permitAll()
                 )
-//                .formLogin(form -> form
-//                        .loginPage("/api/user/login") // 로그인 페이지 URL
-//                        .defaultSuccessUrl("/home", true) // 로그인 성공 시 이동할 URL
-//                        .failureUrl("/api/user/login?error=true") // 로그인 실패 시 이동할 URL
-//                )
+                .formLogin(form -> form
+                        .loginPage("/api/user/login")
+                        .defaultSuccessUrl("/api/meetings/list", true)
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/api/user/login")
+                        .permitAll()
+                )
                 .csrf(csrf -> csrf.disable());
 
         return http.build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
