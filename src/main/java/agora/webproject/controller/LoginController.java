@@ -1,19 +1,27 @@
 package agora.webproject.controller;
 
-import ch.qos.logback.core.model.Model;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
+@RequestMapping("/api/user")
 public class LoginController {
-    @GetMapping("api/user/login")
-    public String showLoginPage() {
-        return "login"; //로그인 페이지의 템플릿 이름
+
+    @GetMapping("/login")
+    public ResponseEntity<String> showLoginPage() {
+        return ResponseEntity.ok("로그인 페이지에 접근했습니다."); // 로그인 페이지 접근 메시지
     }
-    @PostMapping("api/user/login")
-    public String login(@RequestParam String email, @RequestParam String passwword, Model model) {
-        return "/home"; // 로그인 성공 후 갈 URL
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestParam String email, @RequestParam String password) {
+        // 여기서 이메일과 비밀번호를 검증하는 로직을 추가하세요.
+
+        boolean loginSuccess = true; // 로그인 성공 여부 (예시)
+
+        if (loginSuccess) {
+            return ResponseEntity.ok("{\"message\": \"로그인 성공\", \"redirectUrl\": \"/home\"}");
+        } else {
+            return ResponseEntity.status(401).body("{\"message\": \"로그인 실패\"}");
+        }
     }
 }
