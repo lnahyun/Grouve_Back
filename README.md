@@ -11,7 +11,7 @@
 
 - Language : Java <br>
 - Library & Framework : Spring Boot<br>
-- Database : 미정 <br>
+- Database : MySQL <br>
 - ORM : JPA<br>
 - Deploy: 미정 <br>
 
